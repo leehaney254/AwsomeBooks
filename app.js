@@ -16,6 +16,23 @@ form.addEventListener("submit", (event) => {
 })
 
 
-/* Talha add here*/
+//Function to store in local storage
+function storeData() {
+  //Check if local storage is empty
+  if (localStorage.getItem('books') === null) {
+    const bookShelf = [];
+    bookShelf.push(storeObj);
+    localStorage.setItem('books', JSON.stringify(bookShelf));
+  } else {
+    const bookShelfstr = localStorage.getItem('books');
+    bookArray = JSON.parse(bookShelfstr);
+    bookArray.push(storeObj);
+    localStorage.setItem('books', JSON.stringify(bookArray));
+  }
+  //Clear input
+  title.value = '';
+  author.value = '';
+  displayBooks();
+}
 
 /* Steve add here*/
