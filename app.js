@@ -35,4 +35,29 @@ function storeData() {
   displayBooks();
 }
 
-/* Steve add here*/
+//Display the books stpr
+function displayBooks() {
+  const wrapper = document.createElement('div');
+  const bookShelfstr = localStorage.getItem('books');
+  bookArray = JSON.parse(bookShelfstr);
+  console.log(bookArray);
+  bookArray.forEach((element, index) => {
+    const displayTitle = document.createElement('p');
+    const displayAuth = document.createElement('p');
+    const deletebtn = document.createElement('div');
+    const container = document.createElement('div');
+    displayTitle.innerText = element.title;
+    displayAuth.innerText = element.author;
+    deletebtn.innerHTML = `<button onclick='removeBook(${index})'>Remove</button>`;
+    deletebtn.classList.add('deleteBook');
+    container.appendChild(displayTitle);
+    container.appendChild(displayAuth);
+    container.appendChild(deletebtn);
+    wrapper.appendChild(container);
+  });
+  displayArea.appendChild(wrapper);
+}
+//remove a book
+function removeBook(index) {
+  console.log(`Remove Clicked ${index}`);
+}
