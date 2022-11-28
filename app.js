@@ -12,6 +12,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   storeObj.title = title.value;
   storeObj.author = author.value;
+  displayArea.innerHTML = '';
   storeData();
 })
 
@@ -40,12 +41,12 @@ function displayBooks() {
   const wrapper = document.createElement('div');
   const bookShelfstr = localStorage.getItem('books');
   bookArray = JSON.parse(bookShelfstr);
-  console.log(bookArray);
   bookArray.forEach((element, index) => {
     const displayTitle = document.createElement('p');
     const displayAuth = document.createElement('p');
     const deletebtn = document.createElement('div');
     const container = document.createElement('div');
+    const line = document.createElement('hr');
     displayTitle.innerText = element.title;
     displayAuth.innerText = element.author;
     deletebtn.innerHTML = `<button onclick='removeBook(${index})'>Remove</button>`;
@@ -53,11 +54,18 @@ function displayBooks() {
     container.appendChild(displayTitle);
     container.appendChild(displayAuth);
     container.appendChild(deletebtn);
+    container.appendChild(line);
     wrapper.appendChild(container);
   });
   displayArea.appendChild(wrapper);
 }
 //remove a book
 function removeBook(index) {
-  console.log(`Remove Clicked ${index}`);
+  const bookShelfstr = localStorage.getItem('books');
+  let bookArray = JSON.parse(bookShelfstr);
+  bookArray.splice(index, 1);
+  localStorage.setItem('books', JSON.stringify(bookArray));
+  console.log(bookArray);
+  displayArea.innerHTML = '';
+  displayBooks();
 }
