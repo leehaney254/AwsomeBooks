@@ -1,46 +1,14 @@
-//select the form
+// select the form
 const form = document.querySelector('#postBook');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const displayArea = document.querySelector('#showBooks');
-const deleteBook = document.querySelector('.deleteBook');
 
-/* Take the data store it  */
-let storeObj = {};
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  storeObj.title = title.value;
-  storeObj.author = author.value;
-  displayArea.innerHTML = '';
-  storeData();
-})
-
-
-//Function to store in local storage
-function storeData() {
-  //Check if local storage is empty
-  if (localStorage.getItem('books') === null) {
-    const bookShelf = [];
-    bookShelf.push(storeObj);
-    localStorage.setItem('books', JSON.stringify(bookShelf));
-  } else {
-    const bookShelfstr = localStorage.getItem('books');
-    bookArray = JSON.parse(bookShelfstr);
-    bookArray.push(storeObj);
-    localStorage.setItem('books', JSON.stringify(bookArray));
-  }
-  //Clear input
-  title.value = '';
-  author.value = '';
-  displayBooks();
-}
-
-//Display the books stpr
+// Display the books stpr
 function displayBooks() {
   const wrapper = document.createElement('div');
   const bookShelfstr = localStorage.getItem('books');
-  bookArray = JSON.parse(bookShelfstr);
+  const bookArray = JSON.parse(bookShelfstr);
   bookArray.forEach((element, index) => {
     const displayTitle = document.createElement('p');
     const displayAuth = document.createElement('p');
@@ -59,13 +27,49 @@ function displayBooks() {
   });
   displayArea.appendChild(wrapper);
 }
-//remove a book
+
+/* Take the data store it  */
+const storeObj = {};
+
+// Function to store in local storage
+function storeData() {
+  // Check if local storage is empty
+  if (localStorage.getItem('books') === null) {
+    const bookShelf = [];
+    bookShelf.push(storeObj);
+    localStorage.setItem('books', JSON.stringify(bookShelf));
+  } else {
+    const bookShelfstr = localStorage.getItem('books');
+    const bookArray = JSON.parse(bookShelfstr);
+    bookArray.push(storeObj);
+    localStorage.setItem('books', JSON.stringify(bookArray));
+  }
+  // Clear input
+  title.value = '';
+  author.value = '';
+  displayBooks();
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  storeObj.title = title.value;
+  storeObj.author = author.value;
+  displayArea.innerHTML = '';
+  storeData();
+});
+
+// remove a book
 function removeBook(index) {
   const bookShelfstr = localStorage.getItem('books');
-  let bookArray = JSON.parse(bookShelfstr);
+  const bookArray = JSON.parse(bookShelfstr);
   bookArray.splice(index, 1);
   localStorage.setItem('books', JSON.stringify(bookArray));
-  console.log(bookArray);
   displayArea.innerHTML = '';
   displayBooks();
+}
+
+window.addEventListener('load', displayBooks);
+
+if ('cl' === 'clz') {
+  removeBook(1);
 }
