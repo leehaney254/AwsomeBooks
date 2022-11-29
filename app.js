@@ -63,3 +63,22 @@ class Books {
 
 /*Steve here  */
 
+// what happens when a person presses submit
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  // Check if title and author field is empty or not
+  if (title.value === "") {
+    alert("Please enter a book title");
+  } else if (author.value === "") {
+    alert("Please enter a book author");
+  } else {
+    displayArea.innerHTML = '';
+    const book = new Books();
+    book.storeData();
+  }
+});
+const bigBook = new Books();
+deleteItem = (id) => {
+  bigBook.removeBook(id);
+};
+window.addEventListener('load', bigBook.displayBooks());
