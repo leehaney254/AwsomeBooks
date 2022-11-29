@@ -39,15 +39,23 @@ class Books {
       const displayAuth = document.createElement('p');
       const deletebtn = document.createElement('div');
       const container = document.createElement('div');
-      displayTitle.innerText = element.title;
+      const words = document.createElement('div');
+      //set attributes
+      displayTitle.innerText = `"${element.title}" by`;
       displayAuth.innerText = element.author;
-      deletebtn.innerHTML = `<button onclick='deleteItem(${index})'>Remove</button>`;
+      deletebtn.innerHTML = `<button class="btn borders" onclick='deleteItem(${index})'>Remove</button>`;
       deletebtn.classList.add('deleteBook');
-      container.appendChild(displayTitle);
-      container.appendChild(displayAuth);
+      container.classList.add('flexing', 'centers');
+      words.classList.add('flexing');
+      displayAuth.classList.add('word');
+      //apend children
+      words.appendChild(displayTitle);
+      words.appendChild(displayAuth);
+      container.appendChild(words);
       container.appendChild(deletebtn);
       wrapper.appendChild(container);
     });
+    line.classList.add('line');
     displayArea.appendChild(wrapper);
     displayArea.appendChild(line);
   }

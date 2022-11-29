@@ -11,16 +11,17 @@
 
 <body>
   <section id="shelf" class="flexing">
-    <h1>All awesome books</h1>
+    <h1 id="bookhead">All awesome books</h1>
     <div id="showBooks"></div>
+    <h2>Add a new book</h2>
     <form action="" id="postBook">
       <div class="space">
-        <input type="text" name="title" id="title" placeholder="Title">
+        <input type="text" class="borders inputs" name="title" id="title" placeholder="Title">
       </div>
       <div class="space">
-        <input type="text" name="author" id="author" placeholder="Author">
+        <input type="text" class="borders inputs" name="author" id="author" placeholder="Author">
       </div>
-      <button type="submit">Add</button>
+      <button class="borders btn" type="submit">Add</button>
     </form>
   </section>
   <script src="./app.js"></script>
