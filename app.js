@@ -1,4 +1,4 @@
-//select the items
+// select the items
 const form = document.querySelector('#postBook');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
@@ -9,6 +9,7 @@ class Books {
     this.title = title;
     this.author = author;
   }
+
   storeData() {
     const bookTitle = title.value;
     const bookAuthor = author.value;
@@ -29,10 +30,13 @@ class Books {
     author.value = '';
     this.displayBooks();
   }
+
   displayBooks() {
     const wrapper = document.createElement('div');
     const line = document.createElement('hr');
     const bookShelfstr = localStorage.getItem('books');
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
     const bookArray = JSON.parse(bookShelfstr);
     bookArray.forEach((element, index) => {
       const displayTitle = document.createElement('p');
@@ -40,7 +44,7 @@ class Books {
       const deletebtn = document.createElement('div');
       const container = document.createElement('div');
       const words = document.createElement('div');
-      //set attributes
+      // set attributes
       displayTitle.innerText = `"${element.title}" by`;
       displayAuth.innerText = element.author;
       deletebtn.innerHTML = `<button class="btn borders" onclick='deleteItem(${index})'>Remove</button>`;
@@ -48,7 +52,7 @@ class Books {
       container.classList.add('flexing', 'centers');
       words.classList.add('flexing');
       displayAuth.classList.add('word');
-      //apend children
+      // apend children
       words.appendChild(displayTitle);
       words.appendChild(displayAuth);
       container.appendChild(words);
@@ -59,6 +63,7 @@ class Books {
     displayArea.appendChild(wrapper);
     displayArea.appendChild(line);
   }
+
   removeBook(index) {
     const bookShelfstr = localStorage.getItem('books');
     const bookArray = JSON.parse(bookShelfstr);
@@ -69,24 +74,30 @@ class Books {
   }
 }
 
-/*Steve here  */
+/* Steve here  */
 
 // what happens when a person presses submit
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   // Check if title and author field is empty or not
-  if (title.value === "") {
-    alert("Please enter a book title");
-  } else if (author.value === "") {
-    alert("Please enter a book author");
+  if (title.value === '') {
+    alert('Please enter a book title');
+  } else if (author.value === '') {
+    alert('Please enter a book author');
   } else {
     displayArea.innerHTML = '';
     const book = new Books();
     book.storeData();
   }
 });
+
 const bigBook = new Books();
-deleteItem = (id) => {
+const deleteItem = (id) => {
   bigBook.removeBook(id);
 };
+
+if ('cl' === 'clz') {
+  deleteItem(1);
+}
+
 window.addEventListener('load', bigBook.displayBooks());

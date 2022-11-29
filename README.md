@@ -12,7 +12,7 @@
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
-- [👥 Author](#author)
+- [👥 Authors](#author)
 - [🔭 Future Features](#future-features)
 - [🔭 Loom Video](#Loom)
 - [🤝 Contributing](#contributing)
