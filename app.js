@@ -44,7 +44,7 @@ class Books {
     const tits = document.createElement('div');
     tits.innerText = this.author;
     const bookArray = JSON.parse(bookShelfstr);
-    bookArray.forEach((element, index) => {
+    bookArray?.forEach((element, index) => {
       const displayTitle = document.createElement('p');
       const displayAuth = document.createElement('p');
       const deletebtn = document.createElement('div');
