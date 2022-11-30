@@ -1,3 +1,59 @@
-.space {
-  margin: 0 0 1rem 0;
+#shelf {
+  flex-direction: column;
+  align-items: center;
+}
+
+.flexing {
+  display: flex;
+}
+
+.centers {
+  align-items: center;
+  justify-content: space-between;
+  background-color: #dbdbdb;
+  border: 1px solid black;
+  width: 40rem;
+  margin: 1rem;
+  font-weight: 900;
+}
+
+#bookhead {
+  font-weight: 900;
+  font-size: xx-large;
+}
+
+.borders {
+  border: 3px solid black;
+  margin: 0.3rem;
+}
+
+#postBook {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.word {
+  margin-left: 0.3rem;
+}
+
+.marg {
+  margin: 0 0.2rem 0 0.2rem;
+}
+
+.btn {
+  font-weight: 700;
+  font-size: large;
+}
+
+.line {
+  width: 20%;
+  height: 2px;
+  background-color: black;
+  border: none;
+}
+
+.inputs {
+  width: 20rem;
+  height: 1.5rem;
 }
