@@ -10,20 +10,45 @@
 </head>
 
 <body>
-  <section id="shelf" class="flexing">
-    <h1 id="bookhead">All awesome books</h1>
-    <div id="showBooks"></div>
-    <h2>Add a new book</h2>
-    <form action="" id="postBook">
-      <div class="space">
-        <input type="text" class="borders inputs" name="title" id="title" placeholder="Title">
+  <header id="head">
+    <h2>Awesome Books</h2>
+    <nav>
+      <ul id="lists">
+        <li class="listli right linkcol" id="booksshow">List</li>
+        <li class="listli right" id="new">Add New</li>
+        <li class="listli" id="contact">Contact</li>
+      </ul>
+    </nav>
+  </header>
+  <div class="flexing shelf">
+    <section>
+      <h1 id="bookhead">All awesome books</h1>
+      <div id="showBooks"></div>
+      <div class="disappear" id="adding">
+        <h2>Add a new book</h2>
+        <form action="" id="postBook">
+          <div class="space">
+            <input type="text" class="borders inputs" name="title" id="title" placeholder="Title">
+          </div>
+          <div class="space">
+            <input type="text" class="borders inputs" name="author" id="author" placeholder="Author">
+          </div>
+          <button class="borders btn" type="submit">Add</button>
+        </form>
       </div>
-      <div class="space">
-        <input type="text" class="borders inputs" name="author" id="author" placeholder="Author">
-      </div>
-      <button class="borders btn" type="submit">Add</button>
-    </form>
-  </section>
+    </section>
+    <section class="disappear" id="reachme">
+      <h1>Contact Information</h1>
+      <p>Do have any questions or you just want to say "Hello"?</p>
+      <p>You can reach out to us!</p>
+      <ul>
+        <li>Our email mail@gmail.com</li>
+        <li>Our phone no. 05463437453</li>
+        <li>Our address: xyz</li>
+      </ul>
+    </section>
+  </div>
+  <footer id="foots">Copyright &copy; Muhammad Talha Hanif, Leehanay George & Mukama Steven</footer>
   <script src="./app.js"></script>
 </body>
 

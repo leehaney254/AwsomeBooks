@@ -72,6 +72,45 @@ class Books {
     displayArea.innerHTML = '';
     this.displayBooks();
   }
+
+  showNew() {
+    list.classList.remove('linkcol');
+    contact.classList.remove('linkcol');
+    addNew.classList.add('linkcol');
+    //section
+    displayArea.classList.add('disappear');
+    contactInfo.classList.add('disappear');
+    addBook.classList.add('appear');
+    addBook.classList.remove('disappear');
+    displayArea.classList.remove('appear');
+    contactInfo.classList.remove('appear');
+  }
+
+  showContact() {
+    list.classList.remove('linkcol');
+    addNew.classList.remove('linkcol');
+    contact.classList.add('linkcol');
+    //section
+    displayArea.classList.add('disappear');
+    addBook.classList.add('disappear');
+    contactInfo.classList.add('appear');
+    contactInfo.classList.remove('disappear');
+    displayArea.classList.remove('appear');
+    addBook.classList.remove('appear');
+  }
+
+  showList() {
+    addNew.classList.remove('linkcol');
+    contact.classList.remove('linkcol');
+    list.classList.add('linkcol');
+    //section
+    contactInfo.classList.add('disappear');
+    addBook.classList.add('disappear');
+    displayArea.classList.add('appear');
+    displayArea.classList.remove('disappear');
+    contactInfo.classList.remove('appear');
+    addBook.classList.remove('appear');
+  }
 }
 
 /* Steve here  */
@@ -100,4 +139,4 @@ if ('cl' === 'clz') {
   deleteItem(1);
 }
 
-window.addEventListener('load', bigBook.displayBooks());
+/* Talha */
