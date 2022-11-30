@@ -113,8 +113,6 @@ class Books {
   }
 }
 
-/* Steve here  */
-
 // what happens when a person presses submit
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -139,4 +137,19 @@ if ('cl' === 'clz') {
   deleteItem(1);
 }
 
-/* Talha */
+//select variables
+const list = document.querySelector("#booksshow");
+const addNew = document.querySelector("#new");
+const contact = document.querySelector("#contact");
+const addBook = document.querySelector("#adding");
+const contactInfo = document.querySelector("#reachme");
+list.addEventListener('click', () => {
+  bigBook.showList();
+});
+addNew.addEventListener('click', () => {
+  bigBook.showNew();
+});
+contact.addEventListener('click', () => {
+  bigBook.showContact();
+});
+window.addEventListener('load', bigBook.displayBooks());
