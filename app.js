@@ -44,29 +44,36 @@ class Books {
     const tits = document.createElement('div');
     tits.innerText = this.author;
     const bookArray = JSON.parse(bookShelfstr);
-    bookArray?.forEach((element, index) => {
-      const displayTitle = document.createElement('p');
-      const displayAuth = document.createElement('p');
-      const deletebtn = document.createElement('div');
-      const container = document.createElement('div');
-      const words = document.createElement('div');
-      // set attributes
-      displayTitle.innerText = `"${element.title}" by`;
-      displayAuth.innerText = element.author;
-      deletebtn.innerHTML = `<button class="btn borders" onclick='deleteItem(${index})'>Remove</button>`;
-      deletebtn.classList.add('deleteBook');
-      container.classList.add('flexing', 'centers');
-      words.classList.add('flexing');
-      displayAuth.classList.add('word');
-      // apend children
-      words.appendChild(displayTitle);
-      words.appendChild(displayAuth);
-      container.appendChild(words);
-      container.appendChild(deletebtn);
-      wrapper.appendChild(container);
-    });
+    if (bookArray && bookArray.length) {
+      bookArray.forEach((element, index) => {
+        const displayTitle = document.createElement('p');
+        const displayAuth = document.createElement('p');
+        const deletebtn = document.createElement('div');
+        const container = document.createElement('div');
+        const words = document.createElement('div');
+        // set attributes
+        displayTitle.innerText = `"${element.title}" by`;
+        displayAuth.innerText = element.author;
+        deletebtn.innerHTML = `<button class="btn borders" onclick='deleteItem(${index})'>Remove</button>`;
+        deletebtn.classList.add('deleteBook');
+        container.classList.add('flexing', 'centers');
+        words.classList.add('flexing');
+        displayAuth.classList.add('word');
+        // apend children
+        words.appendChild(displayTitle);
+        words.appendChild(displayAuth);
+        container.appendChild(words);
+        container.appendChild(deletebtn);
+        wrapper.appendChild(container);
+      });
+      displayArea.appendChild(wrapper);
+    } else {
+      const nothing = document.createElement('p');
+      nothing.classList.add('nothing');
+      nothing.innerText = 'There are no books to display';
+      displayArea.appendChild(nothing);
+    }
     line.classList.add('line');
-    displayArea.appendChild(wrapper);
     displayArea.appendChild(line);
   }
 

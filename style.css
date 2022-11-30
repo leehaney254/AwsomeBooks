@@ -102,3 +102,9 @@
 #date {
   align-self: flex-end;
 }
+
+.nothing {
+  border: 2px solid black;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  background-color: #dbdbdb;
+}
