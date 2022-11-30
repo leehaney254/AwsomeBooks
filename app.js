@@ -3,6 +3,12 @@ const form = document.querySelector('#postBook');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const displayArea = document.querySelector('#showBooks');
+const list = document.querySelector('#booksshow');
+const addNew = document.querySelector('#new');
+const contact = document.querySelector('#contact');
+const addBook = document.querySelector('#adding');
+const contactInfo = document.querySelector('#reachme');
+const dates = document.querySelector('#date');
 
 class Books {
   constructor(title, author) {
@@ -66,6 +72,8 @@ class Books {
 
   removeBook(index) {
     const bookShelfstr = localStorage.getItem('books');
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
     const bookArray = JSON.parse(bookShelfstr);
     bookArray.splice(index, 1);
     localStorage.setItem('books', JSON.stringify(bookArray));
@@ -77,7 +85,9 @@ class Books {
     list.classList.remove('linkcol');
     contact.classList.remove('linkcol');
     addNew.classList.add('linkcol');
-    //section
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
+    // section
     displayArea.classList.add('disappear');
     contactInfo.classList.add('disappear');
     addBook.classList.add('appear');
@@ -90,7 +100,9 @@ class Books {
     list.classList.remove('linkcol');
     addNew.classList.remove('linkcol');
     contact.classList.add('linkcol');
-    //section
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
+    // section
     displayArea.classList.add('disappear');
     addBook.classList.add('disappear');
     contactInfo.classList.add('appear');
@@ -103,7 +115,9 @@ class Books {
     addNew.classList.remove('linkcol');
     contact.classList.remove('linkcol');
     list.classList.add('linkcol');
-    //section
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
+    // section
     contactInfo.classList.add('disappear');
     addBook.classList.add('disappear');
     displayArea.classList.add('appear');
@@ -137,13 +151,6 @@ if ('cl' === 'clz') {
   deleteItem(1);
 }
 
-//select variables
-const list = document.querySelector("#booksshow");
-const addNew = document.querySelector("#new");
-const contact = document.querySelector("#contact");
-const addBook = document.querySelector("#adding");
-const contactInfo = document.querySelector("#reachme");
-const dates = document.querySelector("#date");
 list.addEventListener('click', () => {
   bigBook.showList();
 });
