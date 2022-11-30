@@ -20,6 +20,7 @@
 #bookhead {
   font-weight: 900;
   font-size: xx-large;
+  text-align: center;
 }
 
 .borders {
@@ -65,28 +66,39 @@
   border: 2px solid black;
   padding: 0 2rem 0 2rem;
 }
+
 #lists {
   list-style: none;
   display: flex;
 }
+
 .listli {
   margin-right: 1rem;
   cursor: pointer;
 }
+
 .right {
   padding-right: 1rem;
   border-right: 1px solid black;
 }
+
 #foots {
   border: 2px solid black;
   padding: 1.5rem 0 1.5rem 1.5rem;
 }
+
 .disappear {
   display: none;
 }
+
 .appear {
   display: block;
 }
+
 .linkcol {
   color: blue;
+}
+
+#date {
+  align-self: flex-end;
 }

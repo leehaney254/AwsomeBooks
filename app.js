@@ -143,6 +143,7 @@ const addNew = document.querySelector("#new");
 const contact = document.querySelector("#contact");
 const addBook = document.querySelector("#adding");
 const contactInfo = document.querySelector("#reachme");
+const dates = document.querySelector("#date");
 list.addEventListener('click', () => {
   bigBook.showList();
 });
@@ -152,4 +153,6 @@ addNew.addEventListener('click', () => {
 contact.addEventListener('click', () => {
   bigBook.showContact();
 });
+dates.innerHTML = Date();
+
 window.addEventListener('load', bigBook.displayBooks());
