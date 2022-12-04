@@ -123,7 +123,7 @@ Contributions, issues, and feature requests are welcome!
 
 > Describe 1 - 3 features you will add to the project.
 
-- [ ] **Implement nav-bar**
+- [ ] **Improve the UI**
 - [ ] **Implement more pages**
 - [ ] **Add functionality**
 

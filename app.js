@@ -3,6 +3,12 @@ const form = document.querySelector('#postBook');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const displayArea = document.querySelector('#showBooks');
+const list = document.querySelector('#booksshow');
+const addNew = document.querySelector('#new');
+const contact = document.querySelector('#contact');
+const addBook = document.querySelector('#adding');
+const contactInfo = document.querySelector('#reachme');
+const dates = document.querySelector('#date');
 
 class Books {
   constructor(title, author) {
@@ -38,43 +44,95 @@ class Books {
     const tits = document.createElement('div');
     tits.innerText = this.author;
     const bookArray = JSON.parse(bookShelfstr);
-    bookArray.forEach((element, index) => {
-      const displayTitle = document.createElement('p');
-      const displayAuth = document.createElement('p');
-      const deletebtn = document.createElement('div');
-      const container = document.createElement('div');
-      const words = document.createElement('div');
-      // set attributes
-      displayTitle.innerText = `"${element.title}" by`;
-      displayAuth.innerText = element.author;
-      deletebtn.innerHTML = `<button class="btn borders" onclick='deleteItem(${index})'>Remove</button>`;
-      deletebtn.classList.add('deleteBook');
-      container.classList.add('flexing', 'centers');
-      words.classList.add('flexing');
-      displayAuth.classList.add('word');
-      // apend children
-      words.appendChild(displayTitle);
-      words.appendChild(displayAuth);
-      container.appendChild(words);
-      container.appendChild(deletebtn);
-      wrapper.appendChild(container);
-    });
+    if (bookArray && bookArray.length) {
+      bookArray.forEach((element, index) => {
+        const displayTitle = document.createElement('p');
+        const displayAuth = document.createElement('p');
+        const deletebtn = document.createElement('div');
+        const container = document.createElement('div');
+        const words = document.createElement('div');
+        // set attributes
+        displayTitle.innerText = `"${element.title}" by`;
+        displayAuth.innerText = element.author;
+        deletebtn.innerHTML = `<button class="btn borders" onclick='deleteItem(${index})'>Remove</button>`;
+        deletebtn.classList.add('deleteBook');
+        container.classList.add('flexing', 'centers');
+        words.classList.add('flexing');
+        displayAuth.classList.add('word');
+        // apend children
+        words.appendChild(displayTitle);
+        words.appendChild(displayAuth);
+        container.appendChild(words);
+        container.appendChild(deletebtn);
+        wrapper.appendChild(container);
+      });
+      displayArea.appendChild(wrapper);
+    } else {
+      const nothing = document.createElement('p');
+      nothing.classList.add('nothing');
+      nothing.innerText = 'There are no books to display';
+      displayArea.appendChild(nothing);
+    }
     line.classList.add('line');
-    displayArea.appendChild(wrapper);
     displayArea.appendChild(line);
   }
 
   removeBook(index) {
     const bookShelfstr = localStorage.getItem('books');
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
     const bookArray = JSON.parse(bookShelfstr);
     bookArray.splice(index, 1);
     localStorage.setItem('books', JSON.stringify(bookArray));
     displayArea.innerHTML = '';
     this.displayBooks();
   }
-}
 
-/* Steve here  */
+  showNew() {
+    list.classList.remove('linkcol');
+    contact.classList.remove('linkcol');
+    addNew.classList.add('linkcol');
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
+    // section
+    displayArea.classList.add('disappear');
+    contactInfo.classList.add('disappear');
+    addBook.classList.add('appear');
+    addBook.classList.remove('disappear');
+    displayArea.classList.remove('appear');
+    contactInfo.classList.remove('appear');
+  }
+
+  showContact() {
+    list.classList.remove('linkcol');
+    addNew.classList.remove('linkcol');
+    contact.classList.add('linkcol');
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
+    // section
+    displayArea.classList.add('disappear');
+    addBook.classList.add('disappear');
+    contactInfo.classList.add('appear');
+    contactInfo.classList.remove('disappear');
+    displayArea.classList.remove('appear');
+    addBook.classList.remove('appear');
+  }
+
+  showList() {
+    addNew.classList.remove('linkcol');
+    contact.classList.remove('linkcol');
+    list.classList.add('linkcol');
+    const tits = document.createElement('div');
+    tits.innerText = this.author;
+    // section
+    contactInfo.classList.add('disappear');
+    addBook.classList.add('disappear');
+    displayArea.classList.add('appear');
+    displayArea.classList.remove('disappear');
+    contactInfo.classList.remove('appear');
+    addBook.classList.remove('appear');
+  }
+}
 
 // what happens when a person presses submit
 form.addEventListener('submit', (event) => {
@@ -99,5 +157,16 @@ const deleteItem = (id) => {
 if ('cl' === 'clz') {
   deleteItem(1);
 }
+
+list.addEventListener('click', () => {
+  bigBook.showList();
+});
+addNew.addEventListener('click', () => {
+  bigBook.showNew();
+});
+contact.addEventListener('click', () => {
+  bigBook.showContact();
+});
+dates.innerHTML = Date();
 
 window.addEventListener('load', bigBook.displayBooks());
